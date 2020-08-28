@@ -17,8 +17,6 @@ library(dplyr)
 library(tidyr)
 library(leaflet)
 
-
-setwd("/home/tsa/Courses/Coursera_R")
 mydata = read.csv("Saved Places.csv")  # read csv file 
 
 ```
