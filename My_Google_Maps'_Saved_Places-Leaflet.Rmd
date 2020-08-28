@@ -1,0 +1,35 @@
+---
+title: "My Google Maps' saved places ( - 22/01/2020)"
+author: "geotsa"
+date: "23/01/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+```{r, message=FALSE}
+install.packages("leaflet")
+
+
+library(dplyr)
+library(tidyr)
+library(leaflet)
+
+
+setwd("/home/tsa/Courses/Coursera_R")
+mydata = read.csv("Saved Places.csv")  # read csv file 
+
+```
+
+
+```{r}
+df <- data.frame(lat = mydata[,3],
+                 lng = mydata[,2])
+df %>% 
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(clusterOptions = markerClusterOptions(), label = as.character(mydata[,9]))
+
+```
